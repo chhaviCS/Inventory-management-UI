@@ -1,2 +1,17 @@
 # Inventory-management-UI
-Simple Inventory Management System using Node.js, Express and MongoDB 
+
+## Features
+- Add Product
+- View Products on separate URL
+- Update Product
+- Delete Product
+
+## Tech Stack
+- Node.js
+- Express.js
+- MongoDB
+- HTML, CSS, JavaScript
+
+## How to Run
+npm install
+node server.js
