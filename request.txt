@@ -1,31 +1,15 @@
-Improve my inventory management UI product cards.
-
-Current stack:
-- HTML
-- CSS
-- Vanilla JavaScript
+Add a live search feature to my inventory management app using vanilla JavaScript.
 
 Requirements:
-- Create modern responsive product cards
-- Add hover animation
-- Add soft shadows
-- Add rounded corners
-- Improve button styling
-- Add proper spacing
-- Use CSS grid for products layout
-- Make cards mobile responsive
-- Style product images properly
-- Add modern font styling
-- Use clean white card design
-- Add smooth transitions
+- Add search input above products
+- Search products by name
+- Filter products in real-time while typing
+- Keep existing product rendering
+- Make search bar modern and responsive
+- Add clean UI styling for search box
+- Do not reload the page
+- Keep backend unchanged
 
-Keep my existing functionality:
-- Delete button
-- Edit button
-- Product image
-- Product name
-- Price
-- Quantity
-
-Do not change backend logic.
-Only improve frontend UI and CSS structure.
+Current app:
+- Products are loaded using fetch('/products')
+- Products are displayed dynamically using JavaScript

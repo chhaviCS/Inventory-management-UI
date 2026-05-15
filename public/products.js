@@ -1,12 +1,22 @@
 const productsDiv = document.getElementById("products");
+const searchInput = document.getElementById("searchInput");
+let allProducts = [];
 
 async function loadProducts() {
     const res = await fetch("/products");
-    const data = await res.json();
+    allProducts = await res.json();
+    renderProducts(allProducts);
+}
 
+function renderProducts(products) {
     productsDiv.innerHTML = "";
+    
+    if (products.length === 0) {
+        productsDiv.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 2rem;">No products found matching your search.</p>';
+        return;
+    }
 
-    data.forEach(p => {
+    products.forEach(p => {
         productsDiv.innerHTML += `
             <div class="card">
                 <img src="${p.image}" alt="${p.name}" class="card-img" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'"/>
@@ -23,6 +33,14 @@ async function loadProducts() {
         `;
     });
 }
+
+searchInput.addEventListener("input", (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    const filteredProducts = allProducts.filter(p => 
+        p.name.toLowerCase().includes(searchTerm)
+    );
+    renderProducts(filteredProducts);
+});
 
 async function deleteProduct(id) {
     await fetch(`/delete/${id}`, { method: "DELETE" });
