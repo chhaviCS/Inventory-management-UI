@@ -9,12 +9,16 @@ async function loadProducts() {
     data.forEach(p => {
         productsDiv.innerHTML += `
             <div class="card">
-                <img src="${p.image}" width="100"/>
-                <h3>${p.name}</h3>
-                <p>Price: ${p.price}</p>
-                <p>Qty: ${p.quantity}</p>
-                <button onclick="deleteProduct('${p._id}')">Delete</button>
-                <button onclick="editProduct('${p._id}')">Edit</button>
+                <img src="${p.image}" alt="${p.name}" class="card-img" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'"/>
+                <div class="card-content">
+                    <h3>${p.name}</h3>
+                    <p class="price">$${p.price.toFixed(2)}</p>
+                    <p class="qty">${p.quantity} in stock</p>
+                </div>
+                <div class="card-actions">
+                    <button class="btn btn-edit" onclick="editProduct('${p._id}')">Edit</button>
+                    <button class="btn btn-delete" onclick="deleteProduct('${p._id}')">Delete</button>
+                </div>
             </div>
         `;
     });
