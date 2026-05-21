@@ -9,6 +9,10 @@
     --shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     --radius: 12px;
     --transition: all 0.3s ease;
+    --low-stock: #ef4444;
+    --healthy-stock: #22c55e;
+    --warning-bg: #fff7ed;
+    --success-bg: #f0fdf4;
 }
 
 * {
@@ -35,6 +39,60 @@ header {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-icon i {
+    width: 24px;
+    height: 24px;
+}
+
+.icon-blue { background: #eff6ff; color: #2563eb; }
+.icon-green { background: #f0fdf4; color: #16a34a; }
+.icon-orange { background: #fff7ed; color: #ea580c; }
+.icon-purple { background: #faf5ff; color: #9333ea; }
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.stat-info h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 0.25rem;
 }
 
 h2 {
@@ -127,6 +185,26 @@ h2 {
     color: var(--text-muted);
     font-size: 0.875rem;
     margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.status-low {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.status-healthy {
+    background: #dcfce7;
+    color: #15803d;
 }
 
 .card-actions {
@@ -222,6 +300,9 @@ h2 {
         padding: 1rem;
     }
     #products {
+        grid-template-columns: 1fr;
+    }
+    .dashboard {
         grid-template-columns: 1fr;
     }
 }

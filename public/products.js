@@ -5,7 +5,20 @@ let allProducts = [];
 async function loadProducts() {
     const res = await fetch("/products");
     allProducts = await res.json();
+    updateDashboard(allProducts);
     renderProducts(allProducts);
+}
+
+function updateDashboard(products) {
+    const totalCount = products.length;
+    const totalValue = products.reduce((sum, p) => sum + (p.price * p.quantity), 0);
+    const lowStockCount = products.filter(p => p.quantity < 5).length;
+    const mostExpensive = products.length > 0 ? Math.max(...products.map(p => p.price)) : 0;
+
+    document.getElementById("totalProducts").textContent = totalCount;
+    document.getElementById("totalValue").textContent = `$${totalValue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    document.getElementById("lowStock").textContent = lowStockCount;
+    document.getElementById("topPrice").textContent = `$${mostExpensive.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
 }
 
 function renderProducts(products) {
@@ -17,13 +30,20 @@ function renderProducts(products) {
     }
 
     products.forEach(p => {
+        const isLowStock = p.quantity < 5;
+        const statusClass = isLowStock ? 'status-low' : 'status-healthy';
+        const statusText = isLowStock ? 'Low Stock' : 'In Stock';
+
         productsDiv.innerHTML += `
             <div class="card">
                 <img src="${p.image}" alt="${p.name}" class="card-img" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'"/>
                 <div class="card-content">
                     <h3>${p.name}</h3>
                     <p class="price">$${p.price.toFixed(2)}</p>
-                    <p class="qty">${p.quantity} in stock</p>
+                    <p class="qty">
+                        ${p.quantity} units
+                        <span class="status-badge ${statusClass}">${statusText}</span>
+                    </p>
                 </div>
                 <div class="card-actions">
                     <button class="btn btn-edit" onclick="editProduct('${p._id}')">Edit</button>
@@ -32,6 +52,11 @@ function renderProducts(products) {
             </div>
         `;
     });
+    
+    // Re-initialize Lucide icons
+    if (window.lucide) {
+        lucide.createIcons();
+    }
 }
 
 searchInput.addEventListener("input", (e) => {

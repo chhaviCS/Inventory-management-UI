@@ -1,15 +1,17 @@
-Add a live search feature to my inventory management app using vanilla JavaScript.
+Improve my inventory management project UI and functionality.
 
-Requirements:
-- Add search input above products
-- Search products by name
-- Filter products in real-time while typing
-- Keep existing product rendering
-- Make search bar modern and responsive
-- Add clean UI styling for search box
-- Do not reload the page
-- Keep backend unchanged
+Add a professional dashboard section at the top of the products page with:
+- Total products count
+- Total inventory value
+- Low stock products count
+- Most expensive product
 
-Current app:
-- Products are loaded using fetch('/products')
-- Products are displayed dynamically using JavaScript
+Use modern responsive cards with icons and hover effects.
+
+Add color-coded alerts:
+- Red for low stock
+- Green for healthy stock
+
+Use clean modern CSS with gradients, shadows, animations, and responsive design.
+
+Do not break existing CRUD functionality.

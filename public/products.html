@@ -3,6 +3,7 @@
 <head>
     <title>Products</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
     <div class="container">
@@ -10,6 +11,37 @@
             <h2>Product Inventory</h2>
             <a href="/" class="add-btn">Add New Product</a>
         </header>
+
+        <div class="dashboard">
+            <div class="stat-card">
+                <div class="stat-icon icon-blue"><i data-lucide="package"></i></div>
+                <div class="stat-info">
+                    <p class="stat-label">Total Products</p>
+                    <h3 id="totalProducts">0</h3>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon icon-green"><i data-lucide="dollar-sign"></i></div>
+                <div class="stat-info">
+                    <p class="stat-label">Total Value</p>
+                    <h3 id="totalValue">$0.00</h3>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon icon-orange"><i data-lucide="alert-triangle"></i></div>
+                <div class="stat-info">
+                    <p class="stat-label">Low Stock</p>
+                    <h3 id="lowStock">0</h3>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon icon-purple"><i data-lucide="trending-up"></i></div>
+                <div class="stat-info">
+                    <p class="stat-label">Most Expensive</p>
+                    <h3 id="topPrice">$0.00</h3>
+                </div>
+            </div>
+        </div>
 
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Search products by name..." aria-label="Search products">

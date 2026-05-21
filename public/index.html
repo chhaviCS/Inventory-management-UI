@@ -3,12 +3,15 @@
 <head>
     <title>Add Product</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
     <div class="container">
         <header>
             <h2>Add New Product</h2>
-            <a href="/products-page" class="add-btn" style="background-color: var(--text-muted);">View Inventory</a>
+            <a href="/products-page" class="add-btn" style="background-color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;">
+                <i data-lucide="list"></i> View Inventory
+            </a>
         </header>
 
         <div class="form-container">
@@ -35,5 +38,10 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    </script>
 </body>
 </html>
