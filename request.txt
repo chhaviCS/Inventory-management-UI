@@ -1,17 +1,12 @@
-Improve my inventory management project UI and functionality.
+Replace browser prompt() editing in my inventory management project with a modern modal popup form.
 
-Add a professional dashboard section at the top of the products page with:
-- Total products count
-- Total inventory value
-- Low stock products count
-- Most expensive product
+Requirements:
+- Smooth open/close animations
+- Pre-filled product data
+- Save and cancel buttons
+- Validation for empty fields
+- Responsive modal design
+- Dark overlay background
+- Better UX/UI than browser prompts
 
-Use modern responsive cards with icons and hover effects.
-
-Add color-coded alerts:
-- Red for low stock
-- Green for healthy stock
-
-Use clean modern CSS with gradients, shadows, animations, and responsive design.
-
-Do not break existing CRUD functionality.
+Keep existing update API functionality unchanged.

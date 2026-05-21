@@ -67,34 +67,62 @@ searchInput.addEventListener("input", (e) => {
     renderProducts(filteredProducts);
 });
 
+// Modal Elements
+const editModal = document.getElementById("editModal");
+const editForm = document.getElementById("editForm");
+const closeModal = document.getElementById("closeModal");
+const cancelBtn = document.getElementById("cancelBtn");
+
 async function deleteProduct(id) {
+    if (!confirm("Are you sure you want to delete this product?")) return;
     await fetch(`/delete/${id}`, { method: "DELETE" });
     loadProducts();
 }
 
+function openEditModal(product) {
+    document.getElementById("editId").value = product._id;
+    document.getElementById("editName").value = product.name;
+    document.getElementById("editPrice").value = product.price;
+    document.getElementById("editQuantity").value = product.quantity;
+    
+    editModal.classList.add("active");
+    document.body.style.overflow = "hidden"; // Prevent scrolling
+}
+
+function closeEditModal() {
+    editModal.classList.remove("active");
+    document.body.style.overflow = "auto";
+}
+
+closeModal.onclick = closeEditModal;
+cancelBtn.onclick = closeEditModal;
+window.onclick = (e) => {
+    if (e.target === editModal) closeEditModal();
+};
+
 async function editProduct(id) {
-    const res = await fetch("/products");
-    const data = await res.json();
+    const product = allProducts.find(p => p._id === id);
+    if (product) {
+        openEditModal(product);
+    }
+}
 
-    const product = data.find(p => p._id === id);
-
-    const name = prompt("Edit Name", product.name);
-    const price = prompt("Edit Price", product.price);
-    const quantity = prompt("Edit Quantity", product.quantity);
-
-    if (name === null || price === null || quantity === null) return;
+editForm.onsubmit = async (e) => {
+    e.preventDefault();
+    
+    const id = document.getElementById("editId").value;
+    const name = document.getElementById("editName").value;
+    const price = Number(document.getElementById("editPrice").value);
+    const quantity = Number(document.getElementById("editQuantity").value);
 
     await fetch(`/update/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            name,
-            price: Number(price),
-            quantity: Number(quantity)
-        })
+        body: JSON.stringify({ name, price, quantity })
     });
 
+    closeEditModal();
     loadProducts();
-}
+};
 
 loadProducts();
