@@ -4,12 +4,18 @@
     <title>Products</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="theme.js"></script>
 </head>
 <body>
     <div class="container">
         <header>
             <h2>Product Inventory</h2>
-            <a href="/" class="add-btn">Add New Product</a>
+            <div class="header-actions">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <i id="themeIcon" data-lucide="moon"></i>
+                </button>
+                <a href="/" class="add-btn">Add New Product</a>
+            </div>
         </header>
 
         <div class="dashboard">

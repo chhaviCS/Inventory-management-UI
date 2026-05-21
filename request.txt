@@ -1,12 +1,11 @@
-Replace browser prompt() editing in my inventory management project with a modern modal popup form.
+Add a professional dark mode toggle to my inventory management system.
 
 Requirements:
-- Smooth open/close animations
-- Pre-filled product data
-- Save and cancel buttons
-- Validation for empty fields
-- Responsive modal design
-- Dark overlay background
-- Better UX/UI than browser prompts
+- Theme switch button in header
+- Save selected theme in localStorage
+- Smooth transition animations
+- Modern dark palette
+- Fully responsive UI
+- Preserve existing layout and styling
 
-Keep existing update API functionality unchanged.
+Use CSS variables for themes.
