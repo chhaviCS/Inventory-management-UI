@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Inventory Management</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="theme.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>User Login</h2>
+            <div class="header-actions">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <i id="themeIcon" data-lucide="moon"></i>
+                </button>
+                <a href="/products-page" class="add-btn" style="background-color: var(--text-muted); display: flex; align-items: center; gap: 0.5rem;">
+                    <i data-lucide="list"></i> View Inventory
+                </a>
+            </div>
+        </header>
+
+        <div class="form-container" style="max-width: 480px;">
+            <div id="alertBox" class="alert"></div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="john@example.com" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn-submit" id="submitBtn">Log In</button>
+            </form>
+            <div class="form-footer">
+                Don't have an account? <a href="/register">Register here</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+    <script>
+        if (window.lucide) {
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>

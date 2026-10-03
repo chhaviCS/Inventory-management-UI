@@ -14,6 +14,11 @@
                 <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
                     <i id="themeIcon" data-lucide="moon"></i>
                 </button>
+                <div id="authNav" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <a href="/login" class="btn btn-edit" id="loginBtn" style="display: inline-flex; align-items: center; gap: 0.4rem; text-decoration: none; padding: 0.5rem 0.85rem;">
+                        <i data-lucide="user"></i> Login
+                    </a>
+                </div>
                 <a href="/" class="add-btn">Add New Product</a>
             </div>
         </header>
@@ -86,5 +91,35 @@
     </div>
 
     <script src="products.js"></script>
+    <script>
+        (function() {
+            const token = localStorage.getItem("token");
+            const userStr = localStorage.getItem("user");
+            const authNav = document.getElementById("authNav");
+            if (token && authNav) {
+                let name = "User";
+                try {
+                    const user = JSON.parse(userStr);
+                    if (user && user.name) name = user.name;
+                } catch (e) {}
+                authNav.innerHTML = `
+                    <span style="font-size: 0.875rem; color: var(--text-muted); display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 500;">
+                        <i data-lucide="user-check"></i> ${name}
+                    </span>
+                    <button id="logoutBtn" class="btn btn-edit" style="display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.5rem 0.75rem;">
+                        Logout
+                    </button>
+                `;
+                document.getElementById("logoutBtn").addEventListener("click", () => {
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("user");
+                    window.location.href = "/login";
+                });
+                if (window.lucide) {
+                    lucide.createIcons();
+                }
+            }
+        })();
+    </script>
 </body>
 </html>

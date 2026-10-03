@@ -456,3 +456,45 @@ h2 {
         grid-template-columns: 1fr;
     }
 }
+
+/* Alert & Auth Feedback Styles */
+.alert {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.alert-error {
+    background-color: var(--warning-bg);
+    color: var(--danger-color);
+    border: 1px solid rgba(220, 38, 38, 0.25);
+}
+
+.alert-success {
+    background-color: var(--success-bg);
+    color: #16a34a;
+    border: 1px solid rgba(22, 163, 74, 0.25);
+}
+
+.form-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.form-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+

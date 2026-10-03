@@ -1,0 +1,199 @@
+We are going to implement the project incrementally.
+
+IMPORTANT:
+This is Phase 1 ONLY.
+
+Do NOT implement:
+
+* Roles
+* Authorization
+* Admin dashboard
+* Staff
+* Customer permissions
+* Cart
+* Wishlist
+* Orders
+* Payments
+* Suppliers
+* Warehouses
+* Reports
+
+For this phase, implement ONLY basic user authentication.
+
+CURRENT PROJECT:
+This is an existing Inventory Management application using:
+
+* Node.js
+* Express
+* MongoDB
+* Mongoose
+* HTML
+* CSS
+* Vanilla JavaScript
+
+The existing product functionality is working.
+
+GOAL:
+Add a secure registration and login system without breaking the existing inventory functionality.
+
+Requirements:
+
+1. Create a User Mongoose model.
+
+Suggested fields:
+
+* name
+* email
+* password
+* createdAt
+
+Use appropriate validation.
+
+2. Password security:
+
+* Use bcrypt/bcryptjs to hash passwords.
+* NEVER store plaintext passwords.
+* NEVER return the password in API responses.
+
+3. Registration API:
+
+POST /api/auth/register
+
+Expected behavior:
+
+* Validate required fields.
+* Validate email format.
+* Validate password.
+* Check whether email already exists.
+* Hash the password.
+* Create the user.
+* Return an appropriate success response.
+
+Possible status codes:
+
+* 201 for successful registration
+* 400 for invalid input
+* 409 for duplicate email
+
+4. Login API:
+
+POST /api/auth/login
+
+Expected behavior:
+
+* Validate email/password.
+* Find the user.
+* Compare password using bcrypt.
+* Return an appropriate error for invalid credentials.
+* Do not reveal whether the email or password was specifically incorrect.
+
+Possible status codes:
+
+* 200 for successful login
+* 400 for invalid request
+* 401 for invalid credentials
+
+5. JWT:
+
+After successful login, generate a JWT.
+
+The token should contain only the minimum required information, such as:
+
+* user ID
+* email
+
+Do NOT put the password in the token.
+
+Store the JWT secret in an environment variable.
+
+Do NOT hardcode secrets in the source code.
+
+6. Authentication middleware:
+
+Create reusable middleware that can later be used to protect APIs.
+
+For now, DO NOT apply this middleware to the existing product APIs.
+
+We will do authorization/protected routes in Phase 2.
+
+7. Login/Register UI:
+
+Create simple pages/forms for:
+
+* Register
+* Login
+
+Use the existing project's styling approach.
+
+Do not redesign the entire application.
+
+8. Frontend behavior:
+
+Registration:
+
+* Send registration data to the backend.
+* Display success/error messages.
+* After successful registration, allow the user to go to login.
+
+Login:
+
+* Send credentials to the backend.
+* Handle success and errors properly.
+* Store the JWT appropriately for this development project.
+* Redirect the user to the existing inventory page after successful login.
+
+9. IMPORTANT — EXISTING FUNCTIONALITY:
+
+Do NOT break:
+
+* Add Product
+* View Inventory
+* Search
+* Edit Product
+* Delete Product
+* Dashboard statistics
+* Theme toggle
+
+Do not unnecessarily modify existing product APIs or Product model.
+
+10. Error handling:
+
+Do not let invalid input or database errors crash the server.
+
+Return clean JSON responses such as:
+
+{
+"success": false,
+"message": "Invalid credentials"
+}
+
+Use appropriate HTTP status codes.
+
+11. Dependencies:
+
+Before installing anything, inspect package.json.
+
+Only install dependencies that are actually required.
+
+12. Implementation process:
+
+Before changing files:
+
+* Inspect the existing project.
+* Identify the files that need to be created/modified.
+* Explain the changes.
+
+Then implement ONLY Phase 1.
+
+After implementation:
+
+* List every file created/modified.
+* Explain what changed in each file.
+* Give me the exact command(s) required to run the application.
+* Give me manual tests for registration and login.
+* Give me API endpoints I can test in Postman.
+
+MOST IMPORTANT:
+Do not modify unrelated files.
+Do not rewrite the existing application.
+Do not implement Phase 2 or any future features.
